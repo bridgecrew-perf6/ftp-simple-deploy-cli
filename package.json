@@ -1,10 +1,10 @@
 {
   "name": "@ftp-simple-deploy/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple CLI tool to deploy your applicatoins via ftp",
   "main": "dist/index.js",
   "bin": {
-    "ftp-simple-deploy": "dist/index.js"
+    "@ftp-simple-deploy/cli": "dist/index.js"
   },
   "scripts": {
     "prebuild": "rimraf dist/",
