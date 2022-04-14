@@ -7,7 +7,7 @@ import { deploy } from "@ftp-simple-deploy/lib";
 import { init } from "./init";
 
 const CONFIG_DEFAULT_PATH = "ftp-deploy.config.js";
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 export { DeployConnectionOptions, DeployOptions } from "@ftp-simple-deploy/lib";
 
