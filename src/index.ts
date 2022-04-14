@@ -14,7 +14,7 @@ export { DeployConnectionOptions, DeployOptions } from "@ftp-simple-deploy/lib";
 const program = new Command();
 
 program
-  .name("ftp-deploy")
+  .name("ftp-simple-deploy")
   .description("cli to easily deploy your applications via ftp")
   .version(VERSION || "version not defined", "-v, --version", "outputs the current program version");
 
