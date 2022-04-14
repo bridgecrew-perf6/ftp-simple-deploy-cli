@@ -3,8 +3,9 @@ import * as path from "path";
 import { Command } from "commander";
 
 import { tryLoadConfigOrThrow } from "./config-file";
-import { deploy } from "@ftp-simple-deploy/lib";
+import { deploy, DeployOptions } from "@ftp-simple-deploy/lib";
 import { init } from "./init";
+import Joi from "joi";
 
 const CONFIG_DEFAULT_PATH = "ftp-deploy.config.js";
 const VERSION = "0.1.3";
@@ -29,14 +30,28 @@ program
   .command("deploy")
   .description("deploy your application using specified configuration file")
   .option("-c, --config <fileName>", `The path to a config`, CONFIG_DEFAULT_PATH)
-  .action(async (config): Promise<void> => {
+  .action(async (options): Promise<void> => {
+    const config = options.config;
+    let deployOptions: DeployOptions;
+
     try {
-      const deployOptions = await tryLoadConfigOrThrow(path.resolve(process.cwd(), config));
+      deployOptions = await tryLoadConfigOrThrow(path.resolve(process.cwd(), config));
+    } catch (e) {
+      if(e instanceof Joi.ValidationError) {
+        console.error("Config validation error!");
+        console.error(e.message);
+        return;
+      }
+
+      console.error("Failed to load config from " + config);
+      return;
+    }
+
+    try {
       await deploy(deployOptions);
     } catch (e) {
-      console.error("Failed to load config from " + config);
-      console.log(e);
-      return;
+      console.error("An error occurred during the deployment");
+      console.error(e);
     }
   });
 
