@@ -22,7 +22,7 @@
   "author": "shabashab",
   "license": "MIT",
   "dependencies": {
-    "@ftp-simple-deploy/lib": "^0.1.4",
+    "@ftp-simple-deploy/lib": "^0.1.5",
     "commander": "^9.1.0",
     "joi": "^17.6.0"
   },
