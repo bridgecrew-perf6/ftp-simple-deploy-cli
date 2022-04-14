@@ -1,0 +1,29 @@
+{
+  "name": "@ftp-simple-deploy/cli",
+  "version": "0.1.0",
+  "description": "A simple CLI tool to deploy your applicatoins via ftp",
+  "main": "dist/index.js",
+  "bin": {
+    "ftp-deploy": "dist/index.js"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/",
+    "build": "tsc",
+    "build:run": "pnpm run build && node dist/index"
+  },
+  "keywords": [
+    "ftp", "deploy", "cli"
+  ],
+  "author": "shabashab",
+  "license": "MIT",
+  "dependencies": {
+    "@ftp-simple-deploy/lib": "^0.1.3",
+    "commander": "^9.1.0",
+    "joi": "^17.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.3"
+  }
+}
